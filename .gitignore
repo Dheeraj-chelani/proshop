@@ -25,3 +25,5 @@ Thumbs.db
 
 # SQLite (ignore if present)
 db.sqlite3
+
+*.swp
