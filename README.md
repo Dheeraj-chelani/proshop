@@ -83,7 +83,7 @@ Prerequisites
     python manage.py runserver
 
     Access the Application:
-
+ 
         Storefront: Open http://127.0.0.1:8000/ in your browser.
 
         Admin Panel: Open http://127.0.0.1:8000/admin/ to log in with your superuser credentials.
