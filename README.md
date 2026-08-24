@@ -1,109 +1,124 @@
-PROSHOP — is a full-stack Django e-commerce platform built to simulate real-world online shopping workflows, back-office administration, and scalable data relationships.  
+# ProShop
 
-🏗 Modular App ArchitectureThe system utilizes Django’s modular architecture to isolate business logic, presentation layers, and database operations into distinct components: 
+A full-stack Django e-commerce platform built to simulate real-world online shopping workflows, back-office administration, and scalable data relationships.
 
-[ Browser / Client UI ] 
-  ├── Django Templates, HTML5/CSS3, Context Processors
-  │
-  ▼
+## 🏗 Modular App Architecture
+
+The system utilizes Django's modular architecture to isolate business logic, presentation layers, and database operations into distinct components:
+
+```
+[ Browser / Client UI ]
+├── Django Templates, HTML5/CSS3, Context Processors
+│
+▼
 [ URL Router ]
-  ├── proshop/urls.py
-  │
-  ▼
+├── proshop/urls.py
+│
+▼
 [ Application Layer ]
-  ├── store/views.py
-  │   ├── Auth & Access Management
-  │   ├── Product Catalog & Search Engine
-  │   └── Shopping Cart & Checkout Engine
-  │
-  ▼
+├── store/views.py
+│   ├── Auth & Access Management
+│   ├── Product Catalog & Search Engine
+│   └── Shopping Cart & Checkout Engine
+│
+▼
 [ Data & ORM Layer ]
-  ├── store/models.py
-  │   ├── User & Customer Profiles
-  │   ├── Product & Stock Inventory
-  │   └── Order & Payment Records
-  │
-  ▼
+├── store/models.py
+│   ├── User & Customer Profiles
+│   ├── Product & Stock Inventory
+│   └── Order & Payment Records
+│
+▼
 [ Database Layer ]
-  └── MySQL / PostgreSQL / SQLite🌐 
-  
- 🌐 Core Functionality Breakdown
+└── MySQL / PostgreSQL / SQLite
+```
 
- 1. Authentication & User Management
+## 🌐 Core Functionality Breakdown
 
-    Role-Based Access Control: Differentiates permissions between general store customers and back-office store administrators.
+### 1. Authentication & User Management
+- **Role-Based Access Control**: Differentiates permissions between general store customers and back-office store administrators.
+- **Session Persistence**: Manages session cookies to maintain active shopping carts across user logins and logouts.
+- **Profile Dashboards**: Provides registered users with order histories, shipping details, and personal profile management.
 
-    Session Persistence: Manages session cookies to maintain active shopping carts across user logins and logouts.
+### 2. Product Catalog & Inventory Management
+- **Categorization & Filtering**: Dynamic query filtering based on categories, price ranges, and keyword searches.
+- **Product Detail Handling**: Manages item inventory levels, pricing, product descriptions, and image uploads.
+- **Stock Control**: Tracks item quantities to prevent overselling when stock limits are reached.
 
-    Profile Dashboards: Provides registered users with order histories, shipping details, and personal profile management.
+### 3. Shopping Cart & Checkout Flow
+- **Dynamic Cart Management**: Session-backed cart that allows users to adjust item quantities, add products, or remove items in real time.
+- **Order Processing**: Aggregates item pricing, shipping costs, and tax calculations into total invoice amounts.
+- **Order Tracking**: Generates unique order reference IDs and saves order snapshots (capturing item prices at the time of purchase).
 
-  2. Product Catalog & Inventory Management
+### 4. Administrative Back-Office
+- **Django Admin Panel**: Custom-configured backend dashboard allowing store operators to manage products, view customer entries, update order statuses, and process refunds.
+- **Database Migrations**: Automated schema migration tracking for seamless database changes during development.
 
-    Categorization & Filtering: Dynamic query filtering based on categories, price ranges, and keyword searches.
+## Prerequisites
 
-    Product Detail Handling: Manages item inventory levels, pricing, product descriptions, and image uploads.
+- Python 3.10+
+- pip (Python package manager)
+- virtualenv (recommended)
 
-    Stock Control: Tracks item quantities to prevent overselling when stock limits are reached.  
+## 🔧 Local Development Setup
 
- 3. Shopping Cart & Checkout Flow
+**1. Clone the Repository**
 
-    Dynamic Cart Management: Session-backed cart that allows users to adjust item quantities, add products, or remove items in real time.
+```bash
+git clone https://github.com/Dheeraj-chelani/proshop.git
+cd proshop
+```
 
-    Order Processing: Aggregates item pricing, shipping costs, and tax calculations into total invoice amounts.
+**2. Create and Activate a Virtual Environment**
 
-    Order Tracking: Generates unique order reference IDs and saves order snapshots (capturing item prices at the time of purchase).
+```bash
+# On Linux/macOS
+python3 -m venv venv
+source venv/bin/activate
 
-       4. Administrative Back-OfficeDjango Admin Panel: Custom-configured backend dashboard allowing store operators to manage products, view customer entries, update order statuses, and process refunds.  Database Migrations: Automated schema migration tracking for seamless database changes during developmen
+# On Windows
+python -m venv venv
+venv\Scripts\activate
+```
 
-Prerequisites
+**3. Install Dependencies**
 
-    Python 3.10+
+```bash
+pip install -r requirements.txt
+```
 
-    pip (Python package manager)
+**4. Apply Database Migrations**
 
-    virtualenv (recommended)
+```bash
+python manage.py migrate
+```
 
-🔧 Local Development Setup
+**5. Create a Superuser (Admin Access)**
 
-    Clone the Repository:
-    Bash
+```bash
+python manage.py createsuperuser
+```
 
-    git clone [https://github.com/your-username/proshop.git](https://github.com/your-username/proshop.git)
-    cd proshop
+**6. Run the Development Server**
 
-    Create and Activate a Virtual Environment:
-    Bash
+```bash
+python manage.py runserver
+```
 
-    # On Linux/macOS
-    python3 -m venv venv
-    source venv/bin/activate
+**7. Access the Application**
 
-    # On Windows
-    python -m venv venv
-    venv\\Scripts\\activate
+- **Storefront**: Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
+- **Admin Panel**: Open [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) to log in with your superuser credentials.
 
-    Install Dependencies:
-    Bash
+## Tech Stack
 
-    pip install -r requirements.txt
+| Layer | Technology |
+|---|---|
+| Backend | Django (Python) |
+| Frontend | Django Templates, HTML5, CSS3 |
+| Database | MySQL / PostgreSQL / SQLite |
+| Admin | Django Admin Panel |
 
-    Apply Database Migrations:
-    Bash
+## License
 
-    python manage.py migrate
-
-    Create a Superuser (Admin Access):
-    Bash
-
-    python manage.py createsuperuser
-
-    Run the Development Server:
-    Bash
-
-    python manage.py runserver
-
-    Access the Application:
- 
-        Storefront: Open http://127.0.0.1:8000/ in your browser.
-
-        Admin Panel: Open http://127.0.0.1:8000/admin/ to log in with your superuser credentials.
+This project is open source and available for educational and portfolio purposes.
